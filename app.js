@@ -1,20 +1,25 @@
 import express from 'express'; 
 import dotenv from 'dotenv'; 
-import { connectionMongo } from './src/config/dataBase.js';
-import usersRouter from './src/routes/user.routes.js';
-import loginRouter from './src/routes/login.routes.js';
+import { connectionMongo, dbConnect } from './src/config/dataBase.js';
 import cors from 'cors'; 
+import roulleteRouter from './src/routes/roullete.routes.js';
+import betRouter from './src/routes/bet.routes.js';
 
 
 const app = express(); 
 dotenv.config(); 
 connectionMongo();
-const port = process.env.PORT || 3001
+const port = process.env.PORT;
+dbConnect();
 app.use(cors()); 
 
 // Le indico las rutas que debe utilizar
 app.use(express.json());
-app.use('/usuarios', usersRouter);
-app.use('/iniciarSesion', loginRouter);
+app.use('/roullete', roulleteRouter);
+app.use('/bet', betRouter);
+
+app.listen(port,()=>{
+    console.log(`Server is being executed on http://localhost:${port}`)
+});
 
 export default app;

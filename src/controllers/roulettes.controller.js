@@ -1,4 +1,4 @@
-import { rouletteModel } from "../models/roulette.model";
+import { rouletteModel } from "../models/roulette.model.js";
 
 // 1. Método para CREAR una ruleta -> POST
 export const postRoullete = async (request, response) => {
@@ -13,7 +13,7 @@ export const postRoullete = async (request, response) => {
 
     } catch (error) {
         return response.status(400).json({
-            "mensaje": "ocurrio un error",
+            "mensaje": "ocurrio un error al crear una ruleta",
             "error": error.message || error
         });
     };
@@ -83,7 +83,7 @@ export const closeRoullete = async (request, response) => {
             }
 
             return {
-                id: bet._id,
+                roulleteId: bet._id,
                 amount: bet.amount,
                 number: bet.number,
                 color: bet.color,
