@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
 
-const rouletteSchema  = new mongoose.Schema ({
-    id : id,
-    isOpen : {
+const rouletteSchema = new mongoose.Schema({
+    id: id,
+    isOpen: {
         type: Boolean,
         default: false
     },
-    winnerNumber : {
+    bets: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "bets"
+        }
+    ],
+    winnerNumber: {
         type: Number,
         default: null
     },
@@ -16,9 +22,9 @@ const rouletteSchema  = new mongoose.Schema ({
         default: null
     },
     date: {
-    type: Date,
-    default: Date.now
-  }
+        type: Date,
+        default: Date.now
+    }
 });
 
 export const rouletteModel = mongoose.model("roulettes", rouletteSchema)

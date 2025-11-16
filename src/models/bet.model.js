@@ -12,6 +12,15 @@ const betSchema  = new mongoose.Schema ({
         max: 36,
         default: null
     },
+    color : {
+        type: String,
+        enum: ["rojo", "negro", null]
+    },
+    rouletteId : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "roullets",
+        required: true
+    },
     date: {
     type: Date,
     default: Date.now
