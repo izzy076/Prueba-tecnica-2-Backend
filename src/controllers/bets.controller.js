@@ -1,5 +1,6 @@
 import { betModel } from "../models/bet.model.js";
 
+
 export const betController = async (request, response) => {
     try {
         const { id } = {
