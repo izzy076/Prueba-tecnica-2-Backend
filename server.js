@@ -1,7 +1,7 @@
 import app from "./app.js";
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT 
 
-app.listen(port, ()=>{
-    console.log('El servidor está ejecutándose correctamente, en el puerto ', port);
+app.listen(port,()=>{
+    console.log(`Server is being executed on http://localhost:${port}`)
 });

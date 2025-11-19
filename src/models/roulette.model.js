@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const rouletteSchema = new mongoose.Schema({
     _id: "",
+    status: {
+        type: String,
+        enum: ["open", "closed"]
+    },
     isOpen: {
         type: Boolean,
         default: false

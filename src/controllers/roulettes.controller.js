@@ -19,6 +19,22 @@ export const postRoullete = async (request, response) => {
     };
 }
 
+
+export const getRoulette = async (req, res) => {
+    try {
+        const roulettes = await rouletteModel.find();
+        res.status(200).json({
+            mensaje: "Listado de ruletas",
+            data: roulettes
+        });
+    } catch (error) {
+        res.status(500).json({
+            mensaje: "Ocurrió un error al obtener las ruletas",
+            error: error.message
+        });
+    }
+};
+
 // Abrir una ruleta
 export const openRoullete = async (request, response) => {
     try {

@@ -8,18 +8,13 @@ import betRouter from './src/routes/bet.routes.js';
 
 const app = express(); 
 dotenv.config(); 
-connectionMongo();
 const port = process.env.PORT;
 dbConnect();
-app.use(cors()); 
+app.use(cors( {origin: "http://localhost:3000"})); 
 
 // Le indico las rutas que debe utilizar
 app.use(express.json());
 app.use('/roullete', roulleteRouter);
 app.use('/bet', betRouter);
-
-app.listen(port,()=>{
-    console.log(`Server is being executed on http://localhost:${port}`)
-});
 
 export default app;
