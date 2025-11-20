@@ -10,7 +10,6 @@ const app = express();
 dotenv.config(); 
 const port = process.env.PORT;
 dbConnect();
-app.use(cors( {origin: "http://localhost:3000"})); 
 
 // Le indico las rutas que debe utilizar
 app.use(express.json());
